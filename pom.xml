@@ -11,6 +11,7 @@
     <groupId>ma.enset.java</groupId>
     <artifactId>micro-service-examen</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>micro-service-examen</name>
     <description>micro-service-examen</description>
     <url/>
@@ -20,6 +21,17 @@
     <developers>
         <developer/>
     </developers>
+    <modules>
+        <module>eureka-server</module>
+        <module>config-server</module>
+        <module>gateway-service</module>
+        <module>inventory-command-service</module>
+        <module>inventory-query-service</module>
+        <module>order-command-service</module>
+        <module>order-query-service</module>
+        <module>analytics-service</module>
+        <module>frontend</module>
+    </modules>
     <scm>
         <connection/>
         <developerConnection/>
