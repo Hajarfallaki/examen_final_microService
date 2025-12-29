@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/ecommerce
+          jwk-set-uri: http://localhost:8180/realms/ecommerce/protocol/openid-connect/certs
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: inventory-command
+          uri: lb://inventory-command-service
+          predicates:
+            - Path=/api/inventory/command/**
+          filters:
+            - StripPrefix=3
+        - id: inventory-query
+          uri: lb://inventory-query-service
+          predicates:
+            - Path=/api/inventory/query/**
+          filters:
+            - StripPrefix=3
+        - id: order-command
+          uri: lb://order-command-service
+          predicates:
+            - Path=/api/order/command/**
+          filters:
+            - StripPrefix=3
+        - id: order-query
+          uri: lb://order-query-service
+          predicates:
+            - Path=/api/order/query/**
+          filters:
+            - StripPrefix=3
+        - id: analytics
+          uri: lb://analytics-service
+          predicates:
+            - Path=/api/analytics/**
+          filters:
+            - StripPrefix=2
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

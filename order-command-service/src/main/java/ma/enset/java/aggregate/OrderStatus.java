@@ -1,4 +1,5 @@
 package ma.enset.java.aggregate;
 
-public class OrderStatus {
+public enum OrderStatus {
+    CREATED, ACTIVATED, CANCELED, SHIPPED, DELIVERED
 }

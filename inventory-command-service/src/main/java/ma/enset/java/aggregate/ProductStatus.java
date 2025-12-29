@@ -1,4 +1,5 @@
 package ma.enset.java.aggregate;
 
-public class ProductStatus {
+public enum ProductStatus {
+    AVAILABLE, OUT_OF_STOCK, PRODUCTION, ABANDONED
 }
